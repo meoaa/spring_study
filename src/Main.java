@@ -1,12 +1,9 @@
 import domain.Todo;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -49,8 +46,8 @@ public class Main {
                         final int searchNum = Integer.parseInt(search);
                         List<Todo> result = store.stream().filter(elem -> elem.getId() == searchNum)
                                 .toList();
-
                         checkTodo(result);
+
                     }else{
                         List<Todo> result = store.stream()
                                 .filter(elem -> elem.getTitle().contains(search))
@@ -72,7 +69,6 @@ public class Main {
                         String updateTitle = sc.nextLine();
                         Todo todo = findTodo.get();
                         todo.setTitle(updateTitle);
-                        todo.setUpdatedAt(LocalDateTime.now());
                         System.out.println("할 일이 변경되었습니다.");
                     }
                     break;
@@ -103,7 +99,6 @@ public class Main {
                     }else{
                         Todo todo  = findTodo.get();
                         todo.toggleComplete();
-                        todo.setUpdatedAt(LocalDateTime.now());
                         System.out.println("상태가 변경되었습니다.");
                     }
                     break;
@@ -121,8 +116,8 @@ public class Main {
     }
 
     private static Optional<Todo> getTodo(ArrayList<Todo> store, int finalId) {
-        Optional<Todo> findTodo = store.stream().filter(elem -> elem.getId() == finalId).findFirst();
-        return findTodo;
+        return store.stream().filter(elem -> elem.getId() == finalId).findFirst();
+
     }
 
     private static void checkTodo(List<Todo> result) {

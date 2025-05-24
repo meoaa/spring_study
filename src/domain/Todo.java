@@ -7,26 +7,23 @@ public class Todo {
     private int id;
     private String title;
     private boolean completed;
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
     public Todo(String title) {
         this.id = ++sequence;
         this.title = title;
         this.completed = false;
-        this.createAt = LocalDateTime.now();
+        this.createdAt = LocalDateTime.now();
     }
 
     public void toggleComplete(){
         this.completed = !completed;
+        this.updatedAt = LocalDateTime.now();
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -35,6 +32,7 @@ public class Todo {
 
     public void setTitle(String title) {
         this.title = title;
+        this.updatedAt = LocalDateTime.now();
     }
 
     public boolean isCompleted() {
@@ -43,15 +41,13 @@ public class Todo {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+        this.updatedAt = LocalDateTime.now();
     }
 
     public LocalDateTime getCreateAt() {
-        return createAt;
+        return createdAt;
     }
 
-    public void setCreateAt(LocalDateTime createAt) {
-        this.createAt = createAt;
-    }
 
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
@@ -68,7 +64,7 @@ public class Todo {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", completed=" + completed +
-                ", createAt=" + createAt +
+                ", createAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
     }
