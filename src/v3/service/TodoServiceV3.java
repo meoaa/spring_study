@@ -1,10 +1,10 @@
-package v2.service;
+package v3.service;
 
 import domain.Todo;
 
 import java.util.List;
 
-public interface TodoServiceV2 {
+public interface TodoServiceV3 {
 
     void addTodo(Todo todo);
 

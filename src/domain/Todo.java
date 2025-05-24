@@ -53,11 +53,6 @@ public class Todo {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-
     @Override
     public String toString() {
         return "Todo{" +
